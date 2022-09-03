@@ -2,6 +2,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 
 import Header from "../Header";
+import Footer from "../Footer";
 import { ILayoutProps } from "../../types/components";
 import { Container } from "./styles";
 
@@ -18,6 +19,7 @@ function Layout({ children, showHeader }: ILayoutProps) {
     <ThemeProvider theme={theme}>
       {showHeader && <Header />}
       <Container>{children}</Container>
+      {showHeader && <Footer />}
     </ThemeProvider>
   );
 }
