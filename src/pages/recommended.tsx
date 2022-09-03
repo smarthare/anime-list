@@ -6,7 +6,7 @@ import { Anime } from "../types/animes";
 
 const Recommended: NextPage<{ animes: Array<Anime> }> = ({ animes }) => {
   return (
-    <Layout>
+    <Layout showHeader>
       <Grid container gap={1}>
         {animes.map((anime, ind) => (
           <Grid item key={`card-${ind}`}>
