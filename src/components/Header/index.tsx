@@ -1,28 +1,14 @@
-import {
-  AppBar,
-  Typography,
-  Theme,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
-import { today, todayMobile } from "../../utils/datetime";
+import { Typography, useMediaQuery } from "@mui/material";
+
 import SearchBar from "./SearchBar";
-import { StyledToolbar } from "./styles";
+import { today, todayMobile } from "../../utils/datetime";
+import { StyledAppBar, StyledToolbar } from "./styles";
 
 function Header() {
-  const theme: Theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery("@media (max-width:800px)");
 
   return (
-    <AppBar
-      position="sticky"
-      sx={{
-        boxShadow: 1,
-        height: "58px",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+    <StyledAppBar position="sticky" sx={{}}>
       <StyledToolbar>
         <Typography
           variant="h1"
@@ -38,7 +24,7 @@ function Header() {
           {isMobile ? todayMobile() : today()}
         </Typography>
       </StyledToolbar>
-    </AppBar>
+    </StyledAppBar>
   );
 }
 

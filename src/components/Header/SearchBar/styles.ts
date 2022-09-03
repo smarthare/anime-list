@@ -2,10 +2,16 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 
 export const StyledInput = styled(TextField)`
-  width: 362px;
+  width: 400px;
   border-radius: 50px;
   background: #eee;
   margin: 0 20px 0 20px;
+
+  & div {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   & input {
     padding: 7.5px;

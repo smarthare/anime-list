@@ -11,19 +11,19 @@ const getAnimesByPage = async (page: number) =>
     });
 
 export const getAnimes = async (page: number) => {
-  const apiPage = Math.floor((page * 9) / 100) + 1;
+  const apiPage = Math.floor((page * 12) / 100) + 1;
 
   const preAnimes = await getAnimesByPage(apiPage);
   let animes;
 
-  if ((page * 9) % 100 < 9 && apiPage > 1) {
+  if ((page * 12) % 100 < 12 && apiPage > 1) {
     animes = preAnimes.concat(await getAnimesByPage(apiPage - 1));
   } else {
     animes = preAnimes;
   }
 
-  const start = (page - 1) * 9;
-  const end = page * 9 - 1;
+  const start = (page - 1) * 12;
+  const end = page * 12 - 1;
 
   return animes.filter(
     (anime: Anime, ind: number) => ind >= start && ind <= end

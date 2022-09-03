@@ -1,5 +1,6 @@
 import { InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+
 import { StyledInput } from "./styles";
 
 type Props = {};

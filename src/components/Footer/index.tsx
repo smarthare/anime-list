@@ -1,29 +1,33 @@
-import { ArrowUpward } from "@mui/icons-material";
-import { Box, Typography, Theme, useTheme } from "@mui/material";
+import { useState } from "react";
+import { Box, Typography } from "@mui/material";
+import { motion } from "framer-motion";
+
+import AnimeButton from "../AnimeButton";
 import { StyledFooter, StyledFooterContent } from "./styles";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 function Footer() {
-  const theme: Theme = useTheme();
+  const [open, setOpen] = useState<boolean>(true);
 
   return (
-    <StyledFooter>
-      <StyledFooterContent>
-        <Box>
-          <Typography
-            variant="h2"
-            fontFamily="Inter"
-            fontSize="16px"
-            fontWeight="bold"
-          >
-            Tony Xu
-          </Typography>
-          <Typography fontFamily="Inter" fontSize="12px" color="#929292">
-            Awesome! Good approach to check right fits.
-          </Typography>
-        </Box>
-        <button><KeyboardArrowUpIcon /></button>
-      </StyledFooterContent>
+    <StyledFooter isOpen={open}>
+      <motion.div layout className="child">
+        <StyledFooterContent>
+          <Box>
+            <Typography
+              variant="h2"
+              fontFamily="Inter"
+              fontSize="16px"
+              fontWeight="bold"
+            >
+              Tony Xu
+            </Typography>
+            <Typography fontFamily="Inter" fontSize="12px" color="#929292">
+              Awesome! Good approach to check right fits.
+            </Typography>
+          </Box>
+          <AnimeButton buttonType="up" onClick={() => setOpen(!open)} />
+        </StyledFooterContent>
+      </motion.div>
     </StyledFooter>
   );
 }

@@ -2,6 +2,20 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
 
-module.exports = nextConfig
+  images: {
+    domains: ["cdn.myanimelist.net"],
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/recommended",
+        permanent: true,
+      },
+    ];
+  },
+};
+
+module.exports = nextConfig;
