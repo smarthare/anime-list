@@ -17,10 +17,12 @@ function CandidateRow({ anime }: IAnimeCardProps) {
       <ImageWrapper>
         <Image
           src={anime.images.jpg.image_url}
+          blurDataURL={anime.images.jpg.small_image_url}
           alt={anime.title}
           width={50}
           height={50}
           objectFit="cover"
+          placeholder="blur"
         />
       </ImageWrapper>
 

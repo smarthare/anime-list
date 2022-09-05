@@ -12,9 +12,11 @@ function AnimeCard({ anime }: IAnimeCardProps) {
       <ImageWrapper>
         <Image
           src={anime.images.jpg.image_url}
+          blurDataURL={anime.images.jpg.small_image_url}
           alt={anime.title}
           layout="fill"
           objectFit="cover"
+          placeholder="blur"
         />
         <TitleWrapper>
           <Typography
