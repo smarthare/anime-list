@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This application was deployed on Vercel.
+
+## Application
+
+The following app is retrieving animations through different API endpoints.
+- Backend API.
+[anime.smarthare.vercel.app](https://anime-smarthare.vercel.app/recommended)
+
+- Jikan API.
+[anime-qnojfmnop-smarthare.vercel.app](https://anime-qnojfmnop-smarthare.vercel.app/)
+
+In terms of search performance, the latter outperforms the former.
 
 ## Getting Started
 
