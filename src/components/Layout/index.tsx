@@ -1,4 +1,4 @@
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 import { ThemeProvider } from "@emotion/react";
 
@@ -10,9 +10,7 @@ import { Container, theme } from "./styles";
 function Layout({ children, showHeader }: ILayoutProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Head>
-        <title>Anime - {showHeader ? "Recommendations" : "Detail"}</title>
-      </Head>
+      <NextSeo title={`Anime - ${showHeader ? "Recommendations" : "Detail"}`} />
 
       {showHeader && <Header />}
       <Container>{children}</Container>

@@ -8,7 +8,9 @@ import { IAnimeCardProps } from "../types/components";
 function withMotion<T extends DialogContentProps | IAnimeCardProps>(
   Component: ComponentType<T>
 ) {
-  return (hocProps: T) => {
+  const displayName = Component.displayName || Component.name || "Component";
+
+  const ComponentWithMotion = (hocProps: T) => {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -23,6 +25,10 @@ function withMotion<T extends DialogContentProps | IAnimeCardProps>(
       </motion.div>
     );
   };
+
+  ComponentWithMotion.displayName = `withMotion(${displayName})`;
+
+  return ComponentWithMotion;
 }
 
 export default withMotion;
