@@ -1,6 +1,6 @@
 This application was deployed on Vercel.
 
-[anime.smarthare.vercel.app](https://anime-smarthare.vercel.app/recommended)
+[anime-qnojfmnop-smarthare.vercel.app](https://anime-qnojfmnop-smarthare.vercel.app/)
 
 ## Getting Started
 
