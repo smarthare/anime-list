@@ -6,11 +6,8 @@ import { Grid, Typography, useTheme } from "@mui/material";
 import Layout from "../components/Layout";
 import AnimeCard from "../components/AnimeCard";
 import AnimeButton from "../components/AnimeButton";
-import withMotion from "../hocs/withMotion";
 import { getAnimesByPage } from "../service/jikan";
 import { RecommendedPageTypes } from "../types/components";
-
-const AnimeCardWithMotion = withMotion(AnimeCard);
 
 const RecommendedPage: NextPage<RecommendedPageTypes> = ({
   animes,
@@ -53,7 +50,7 @@ const RecommendedPage: NextPage<RecommendedPageTypes> = ({
                 onClick={handleCardClick(anime.mal_id)}
                 key={`card-${ind}-${anime.mal_id}`}
               >
-                <AnimeCardWithMotion anime={anime} />
+                <AnimeCard anime={anime} />
               </Grid>
             ))
           ) : (

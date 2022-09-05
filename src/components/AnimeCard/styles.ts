@@ -56,4 +56,14 @@ export const TitleWrapper = styled(Box)`
   );
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+
+  & p {
+    ${(props) => props.theme.breakpoints.down("md")} {
+      font-size: 24px;
+    }
+
+    ${(props) => props.theme.breakpoints.down("sm")} {
+      font-size: 32px;
+    }
+  }
 `;
