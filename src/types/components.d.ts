@@ -19,11 +19,12 @@ export interface IButtonProps {
   onClick: VoidFunction;
 }
 
-export type RecommendedPageTypes = {
+export type RecommendedComponentTypes = {
   animes: Array<Anime>;
   page: number;
-  lastPage: number;
-} & NextPage;
+};
+
+export type RecommendedPageTypes = RecommendedComponentTypes & NextPage;
 
 export interface ISearchDialogProps {
   open: boolean;

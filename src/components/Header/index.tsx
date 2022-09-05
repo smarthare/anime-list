@@ -1,11 +1,13 @@
 import { useState } from "react";
+import dynamic from "next/dynamic";
 
 import { Typography, useMediaQuery } from "@mui/material";
 
-import DummySearchBar from "./DummySearchBar";
-import SearchDialog from "../SearchDialog";
-import { today, todayMobile } from "../../utils/datetime";
+import { today, todayMobile } from "utils/datetime";
 import { StyledAppBar, StyledToolbar } from "./styles";
+
+const DummySearchBar = dynamic(() => import("./DummySearchBar"));
+const SearchDialog = dynamic(() => import("../SearchDialog"));
 
 function Header() {
   const isSmall = useMediaQuery("@media (max-width:800px)");

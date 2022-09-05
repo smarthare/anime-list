@@ -1,5 +1,5 @@
-import { getAnimesByQuery } from "../../service/jikan";
-import { SearchApiRequest, SearchApiResponse } from "../../types/apis";
+import { getAnimesByQuery } from "service/jikan";
+import { SearchApiRequest, SearchApiResponse } from "types/apis";
 
 export default async function handler(
   req: SearchApiRequest,

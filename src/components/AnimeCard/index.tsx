@@ -2,8 +2,8 @@ import Image from "next/image";
 
 import { Typography } from "@mui/material";
 
-import withMotion from "../../hocs/withMotion";
-import { IAnimeCardProps } from "../../types/components";
+import withMotion from "hocs/withMotion";
+import { IAnimeCardProps } from "types/components";
 import { ImageWrapper, TitleWrapper } from "./styles";
 
 function AnimeCard({ anime }: IAnimeCardProps) {

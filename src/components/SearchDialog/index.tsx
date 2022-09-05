@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import axios from "axios";
 
 import { CircularProgress, DialogContent, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-import CandidateRow from "./CandidateLine";
-import useDebounce from "../../hooks/useDebounce";
-import withMotion from "../../hocs/withMotion";
-import { ISearchDialogProps } from "../../types/components";
-import { Anime } from "../../types/animes";
+import useDebounce from "hooks/useDebounce";
+import withMotion from "hocs/withMotion";
+import { ISearchDialogProps } from "types/components";
+import { Anime } from "types/animes";
 import {
   StyledCloseButton,
   StyledDialog,
   StyledDialogTitle,
   StyledInput,
 } from "./styles";
+
+const CandidateRow = dynamic(() => import("./CandidateLine"));
 
 const DialogContentWithMotion = withMotion(DialogContent);
 

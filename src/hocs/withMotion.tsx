@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import { DialogContentProps } from "@mui/material";
 
-import { IAnimeCardProps } from "../types/components";
+import { IAnimeCardProps } from "types/components";
 
 function withMotion<T extends DialogContentProps | IAnimeCardProps>(
   Component: ComponentType<T>

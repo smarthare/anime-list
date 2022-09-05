@@ -4,7 +4,7 @@ import { ThemeProvider } from "@emotion/react";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import { ILayoutProps } from "../../types/components";
+import { ILayoutProps } from "types/components";
 import { Container, theme } from "./styles";
 
 function Layout({ children, showHeader }: ILayoutProps) {

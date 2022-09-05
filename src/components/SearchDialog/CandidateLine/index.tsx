@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-import { IAnimeCardProps } from "../../../types/components";
+import { IAnimeCardProps } from "types/components";
 import { ImageWrapper, TypographyWrapper } from "./styles";
 
 function CandidateRow({ anime }: IAnimeCardProps) {
