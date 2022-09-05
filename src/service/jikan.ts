@@ -1,5 +1,7 @@
 import axios, { AxiosError } from "axios";
 
+import { Anime } from "types/animes";
+
 const JIKAN_MAIN_URL = "https://api.jikan.moe/v4";
 
 export const getAnimesByPage = async (page: number) =>
@@ -23,7 +25,7 @@ export const getAnimeById = async (id: number) =>
 export const getAnimesByQuery = async (q: string) =>
   axios
     .get(`${JIKAN_MAIN_URL}/anime?q=${q}`)
-    .then(({ data }) => data.data)
+    .then(({ data }) => data.data.filter((anime: Anime, ind: number) => ind < 5))
     .catch((error: AxiosError) => {
       console.error(error.message);
       return [];

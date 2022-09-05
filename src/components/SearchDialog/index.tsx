@@ -15,6 +15,7 @@ import {
   StyledDialogTitle,
   StyledInput,
 } from "./styles";
+import { getAnimesByQuery } from "service/jikan";
 
 const CandidateRow = dynamic(() => import("./CandidateLine"));
 
@@ -30,9 +31,7 @@ function SearchDialog({ open, handleClose }: ISearchDialogProps) {
   const searchCandidates = async (query: string) => {
     setLoading(true);
 
-    const newCandidates = await axios
-      .get(`/api/search?query=${query}`)
-      .then(({ data }) => data);
+    const newCandidates = await getAnimesByQuery(query);
     setCandidates(newCandidates);
 
     setLoading(false);
