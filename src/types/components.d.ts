@@ -1,8 +1,11 @@
 import type { NextPage } from "next";
 import { Anime } from "./animes";
 
-export interface ILayoutProps {
+export interface IProps {
   children: React.ReactNode;
+}
+
+export interface ILayoutProps extends IProps {
   showHeader?: boolean;
 }
 
@@ -16,7 +19,17 @@ export interface IButtonProps {
   onClick: VoidFunction;
 }
 
-export type RecommendedTypes = {
+export type RecommendedPageTypes = {
   animes: Array<Anime>;
   page: number;
+  lastPage: number;
 } & NextPage;
+
+export interface ISearchDialogProps {
+  open: boolean;
+  handleClose: VoidFunction;
+}
+
+export interface IDummySearchBarProps {
+  onClick: VoidFunction;
+}

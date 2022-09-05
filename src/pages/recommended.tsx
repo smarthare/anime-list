@@ -6,10 +6,16 @@ import { Grid, Typography, useTheme } from "@mui/material";
 import Layout from "../components/Layout";
 import AnimeCard from "../components/AnimeCard";
 import AnimeButton from "../components/AnimeButton";
-import { getAnimes } from "../service/jikan";
-import { RecommendedTypes } from "../types/components";
+import withMotion from "../hocs/withMotion";
+import { getAnimesByPage } from "../service/jikan";
+import { RecommendedPageTypes } from "../types/components";
 
-const Recommended: NextPage<RecommendedTypes> = ({ animes, page }) => {
+const AnimeCardWithMotion = withMotion(AnimeCard);
+
+const RecommendedPage: NextPage<RecommendedPageTypes> = ({
+  animes,
+  page,
+}) => {
   const router = useRouter();
   const theme = useTheme();
 
@@ -21,21 +27,50 @@ const Recommended: NextPage<RecommendedTypes> = ({ animes, page }) => {
     router.push(`?page=${page - 1}`);
   };
 
+  const handleCardClick = (malId: number) => () => {
+    router.push(`/detail/${malId}`);
+  };
+
   return (
     <Layout showHeader>
-      <Grid
-        container
-        rowSpacing={3}
-        columnSpacing={5}
-        width={theme.breakpoints.values.md + 40}
-        paddingX={"20px"}
-      >
-        {animes.map((anime, ind) => (
-          <AnimeCard anime={anime} key={`card-${ind}-${anime.mal_id}`} />
-        ))}
+      <Grid container display="flex" justifyContent="center">
+        <Grid
+          container
+          rowSpacing={3}
+          columnSpacing={5}
+          width={theme.breakpoints.values.md + 40}
+          paddingX={2.5}
+          minHeight="calc(100vh - 242px)"
+        >
+          {animes.length > 0 ? (
+            animes.map((anime, ind) => (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                onClick={handleCardClick(anime.mal_id)}
+                key={`card-${ind}-${anime.mal_id}`}
+              >
+                <AnimeCardWithMotion anime={anime} />
+              </Grid>
+            ))
+          ) : (
+            <Typography
+              width="100%"
+              fontSize="16px"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              Oops it seems there is nothing for page {page}
+            </Typography>
+          )}
+        </Grid>
 
         <Grid
-          width="100%"
+          container
           display="flex"
           justifyContent="center"
           alignItems="center"
@@ -46,7 +81,7 @@ const Recommended: NextPage<RecommendedTypes> = ({ animes, page }) => {
             onClick={handlePrevPage}
             disabled={page === 1}
           />
-          <Typography fontFamily="Inter" fontSize="16px" fontWeight="bold">
+          <Typography fontSize="16px" fontWeight="bold">
             {page}
           </Typography>
           <AnimeButton buttonType="next" onClick={handleNextPage} />
@@ -65,16 +100,16 @@ export const getServerSideProps: GetServerSideProps = async ({
     "public, s-maxage=10, stale-while-revalidate=59"
   );
 
-  const page = Number(query.page);
-  const vaildPage = isNaN(page) || page < 1 ? 1 : page;
-  const animes = await getAnimes(vaildPage);
+  const newPage = Number(query.page);
+  const page = isNaN(newPage) || newPage < 1 ? 1 : newPage;
+  const animes = await getAnimesByPage(page);
 
   return {
     props: {
       animes,
-      page: vaildPage,
+      page,
     },
   };
 };
 
-export default Recommended;
+export default RecommendedPage;

@@ -2,9 +2,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
 }
 
 a {
@@ -14,4 +11,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p, div, span, a {
+  font-family: Inter !important;
 }

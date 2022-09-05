@@ -11,6 +11,7 @@ export const ImageWrapper = styled(Box)`
   width: 100%;
   border-radius: 10px;
   position: relative;
+  transition: all 0.3s;
 
   ${(props) => props.theme.breakpoints.up("lg")} {
     height: calc(100vh / 3 - 64px);
@@ -25,7 +26,21 @@ export const ImageWrapper = styled(Box)`
     height: calc(100vh / 1.5 - 64px);
   }
 
-  transition: all 0.3s;
+  & span {
+    border-radius: 10px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 30%),
+      0px 0px 2px 0px rgb(0 0 0 / 14%), 0px 0px 5px 0px rgb(0 0 0 / 12%);
+    transition: all 0.6s;
+
+    & img {
+      transform: scale(1.1);
+      transition: all 0.5s;
+    }
+  }
 `;
 
 export const TitleWrapper = styled(Box)`

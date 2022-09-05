@@ -1,30 +1,48 @@
+import { useState } from "react";
+
 import { Typography, useMediaQuery } from "@mui/material";
 
-import SearchBar from "./SearchBar";
+import DummySearchBar from "./DummySearchBar";
+import SearchDialog from "../SearchDialog";
 import { today, todayMobile } from "../../utils/datetime";
 import { StyledAppBar, StyledToolbar } from "./styles";
 
 function Header() {
-  const isMobile = useMediaQuery("@media (max-width:800px)");
+  const isSmall = useMediaQuery("@media (max-width:800px)");
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
-    <StyledAppBar position="sticky" sx={{}}>
-      <StyledToolbar>
-        <Typography
-          variant="h1"
-          fontSize="24px"
-          fontFamily="Inter"
-          fontWeight="bold"
-          color="#000"
-        >
-          Anime
-        </Typography>
-        <SearchBar />
-        <Typography fontFamily="Inter" fontSize="14px" whiteSpace="nowrap">
-          {isMobile ? todayMobile() : today()}
-        </Typography>
-      </StyledToolbar>
-    </StyledAppBar>
+    <>
+      <StyledAppBar position="sticky" sx={{}}>
+        <StyledToolbar>
+          <Typography
+            variant="h1"
+            fontSize="24px"
+            fontWeight="bold"
+            color="#000"
+          >
+            Anime
+          </Typography>
+
+          <DummySearchBar onClick={handleClickOpen} />
+
+          <Typography fontSize="14px" whiteSpace="nowrap">
+            {isSmall ? todayMobile() : today()}
+          </Typography>
+        </StyledToolbar>
+
+        <SearchDialog open={open} handleClose={handleClose} />
+      </StyledAppBar>
+    </>
   );
 }
 

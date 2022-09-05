@@ -1,31 +1,30 @@
-import axios from "axios";
-import { Anime } from "../types/animes";
+import axios, { AxiosError } from "axios";
 
-const getAnimesByPage = async (page: number) =>
+const JIKAN_MAIN_URL = "https://api.jikan.moe/v4";
+
+export const getAnimesByPage = async (page: number) =>
   axios
-    .get(`https://api.jikan.moe/v4/recommendations/anime?page=${page}`)
+    .get(`${JIKAN_MAIN_URL}/top/anime?page=${page}&limit=12&filter=favorite`)
     .then(({ data }) => data.data)
-    .catch((error) => {
-      console.error(error);
+    .catch((error: AxiosError) => {
+      console.error(error.message);
       return [];
     });
 
-export const getAnimes = async (page: number) => {
-  const apiPage = Math.floor((page * 12) / 100) + 1;
+export const getAnimeById = async (id: number) =>
+  axios
+    .get(`${JIKAN_MAIN_URL}/anime/${id}`)
+    .then(({ data }) => data.data)
+    .catch((error: AxiosError) => {
+      console.error(error.message);
+      return [];
+    });
 
-  const preAnimes = await getAnimesByPage(apiPage);
-  let animes;
-
-  if ((page * 12) % 100 < 12 && apiPage > 1) {
-    animes = preAnimes.concat(await getAnimesByPage(apiPage - 1));
-  } else {
-    animes = preAnimes;
-  }
-
-  const start = (page - 1) * 12;
-  const end = page * 12 - 1;
-
-  return animes.filter(
-    (anime: Anime, ind: number) => ind >= start && ind <= end
-  );
-};
+export const getAnimesByQuery = async (q: string) =>
+  axios
+    .get(`${JIKAN_MAIN_URL}/anime?q=${q}`)
+    .then(({ data }) => data.data)
+    .catch((error: AxiosError) => {
+      console.error(error.message);
+      return [];
+    });

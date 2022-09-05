@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+
+import { Box, Typography } from "@mui/material";
 
 import AnimeButton from "../AnimeButton";
 import { StyledFooter, StyledFooterContent } from "./styles";
@@ -26,14 +27,13 @@ function Footer() {
           <Box>
             <Typography
               variant="h2"
-              fontFamily="Inter"
               fontSize="16px"
               fontWeight="bold"
             >
               Tony Xu
             </Typography>
-            <Typography fontFamily="Inter" fontSize="12px" color="#929292">
-              Awesome! Good approach to check right candidates.
+            <Typography fontSize="12px" color="#929292">
+              Awesome! Good approach to getting to know the right candidates.
             </Typography>
           </Box>
 
