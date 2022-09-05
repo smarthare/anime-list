@@ -3,11 +3,18 @@ This application was deployed on Vercel.
 ## Application
 
 The following app is retrieving animations through different API endpoints.
-- Backend API:
-[anime.smarthare.vercel.app](https://anime-smarthare.vercel.app/recommended)
+
+- Backend API
+
+  Environment: Production
+
+  Endpoint: `/api/search`
 
 - Jikan API:
-[anime-qnojfmnop-smarthare.vercel.app](https://anime-qnojfmnop-smarthare.vercel.app/)
+
+  Environment: Preview
+
+  Endpoint: `https://api.jikan.moe/v4/anime`
 
 In terms of search performance, the latter outperforms the former.
 
