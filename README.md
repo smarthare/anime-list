@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This application was deployed on Vercel.
+
+[anime.smarthare.vercel.app](https://anime-smarthare.vercel.app/recommended)
 
 ## Getting Started
 
