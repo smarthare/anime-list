@@ -2,7 +2,7 @@ This application was deployed on Vercel.
 
 ## Application
 
-The following app is retrieving animations through different API endpoints.
+The app is retrieving animations through different API endpoints.
 
 - Backend API
 
